@@ -12,21 +12,22 @@
       <h1>www.engiqueer.net</h1>
       <nav>
         <div>
-        {% set navPages = collections.all | eleventyNavigationBreadcrumb(eleventyNavigation.key, {includeSelf: true}) %}
-        <ul id="breadcrumbMenu">
-        {%- for entry in navPages %}
-          <li>
-            <a href="{{ entry.url }}">{{ entry.key }}</a>
-          </li>
-        {%- endfor %}
-          <li>
-            <a href="{{ url }}">{{ eleventyNavigation.key}}</a>
-          </li>
-        </ul> > ls
+          <div>> ls ~</div>
+          <div>
+          <ul id="navMenu">
+            {% set navPages = collections.all | eleventyNavigation("~") %}
+          {%- for entry in navPages %}
+            <li>
+              <a href="{{ entry.url }}">{{ entry.title }}</a>
+            </li>
+          {%- endfor %}
+          </ul>
+          </div>
         </div>
         {% set navPages = collections.all | eleventyNavigation(eleventyNavigation.key) %}
-        {% if navPages.length > 0 %}
+        {% if navPages.length > 0 and eleventyNavigation.key != "~" %}
         <div>
+          <div>> ls</div>
           <ul id="navMenu">
           {%- for entry in navPages %}
             <li>
@@ -36,7 +37,20 @@
           </ul>
         </div>
         {% endif %}
-        > cat {{ eleventyNavigation.title or eleventyNavigation.key}}.txt
+        {% set navPages = collections.all | eleventyNavigationBreadcrumb(eleventyNavigation.key) %}
+        <div>
+          > cat 
+          <ul id="breadcrumbMenu">
+            {%- for entry in navPages %}
+              <li>
+                <a href="{{ entry.url }}">{{ entry.key }}</a>
+              </li>
+            {%- endfor %}
+            <li>
+              <a href="{{ page.url }}">{{ eleventyNavigation.title or eleventyNavigation.key }}</a>.txt
+            </li>
+          </ul>
+        </div>
       </nav>
     </header>
 
