@@ -1,12 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700');
 
+:root {
+  /* --fg-color: #33FF33; */
+  --fg-color: #FFBB00;
+  --bg-color: #282828;
+}
+
 body {
   font-family: "Roboto Mono", monospace;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
-  background-color: #000000;
-  color: #4AF626;
+  background-color: var(--bg-color);
+  color: var(--fg-color);
   margin-top: 0;
   margin-bottom: 0;
   margin-left: auto;
@@ -25,11 +31,11 @@ footer {
 }
 
 a:link {
-  color: #4AF626;
+  color: var(--fg-color);
 }
 
 a:visited {
-  color: #4AF626;
+  color: var(--fg-color);
 }
 
 #navMenu {
