@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title | escape }}</title>
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <link rel="stylesheet" href="/css/main.css">
+  </head>
+  <body>
+    <header>
+      <h1>www.engiqueer.net</h1>
+      <nav>
+        <div>
+        {% set navPages = collections.all | eleventyNavigationBreadcrumb(eleventyNavigation.key, {includeSelf: true}) %}
+        <ul id="breadcrumbMenu">
+        {%- for entry in navPages %}
+          <li>
+            <a href="{{ entry.url }}">{{ entry.key }}</a>
+          </li>
+        {%- endfor %}
+          <li>
+            <a href="{{ url }}">{{ eleventyNavigation.key}}</a>
+          </li>
+        </ul> > ls
+        </div>
+        {% set navPages = collections.all | eleventyNavigation(eleventyNavigation.key) %}
+        {% if navPages.length > 0 %}
+        <div>
+          <ul id="navMenu">
+          {%- for entry in navPages %}
+            <li>
+              <a href="{{ entry.url }}">{{ entry.title }}</a>
+            </li>
+          {%- endfor %}
+          </ul>
+        </div>
+        {% endif %}
+        > cat {{ eleventyNavigation.title or eleventyNavigation.key}}.txt
+      </nav>
+    </header>
+
+    <main>
+      <article>
+        <h2>
+          {{ title | safe }}
+        </h2>
+        {% block article %}
+          {{ content | safe }}
+        {% endblock %}
+      </article>
+    </main>
+
+    <footer>
+      Joe's Blog!
+    </footer>
+  </body>
+</html>

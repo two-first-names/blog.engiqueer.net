@@ -1,0 +1,19 @@
+{
+  "name": "blog.engiqueer.net",
+  "license": "MIT",
+  "scripts": {
+    "build-ci": "eleventy",
+    "build": "npm run clean && npm run build-ci",
+    "serve": "npm run clean && eleventy --serve",
+    "clean": "rm -Rf ./_site/posts/*"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1",
+    "@11ty/eleventy-navigation": "^0.1.3",
+    "@11ty/eleventy-plugin-rss": "^1.0.7",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^3.0.1",
+    "eleventy-plugin-local-images": "^0.4.0",
+    "markdown-it": "^12.3.2",
+    "markdown-it-anchor": "^5.2.5"
+  }
+}
